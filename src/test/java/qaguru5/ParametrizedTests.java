@@ -28,6 +28,7 @@ public class ParametrizedTests {
         Selenide.closeWebDriver();
     }
 
+    //1st
     @ValueSource(strings = {"А111АА777", "К367ММ777"})
     @ParameterizedTest(name = "Check mafin with GRZ {0}")
     void commonSearchTest(String grz) {
@@ -36,10 +37,12 @@ public class ParametrizedTests {
         $("div h1").shouldHave(textCaseSensitive("Оформить КАСКО"));
     }
 
+    //2nd
     @CsvSource(value = {
             "А111АА777, Toyota, RAV4",
             "К367ММ777, Volkswagen, Polo"
     })
+    //3d
     @ParameterizedTest(name = "Check mafin, with mark of auto = {1}")
     void complexSearchTest(String grz, String mark, String model) {
         $("input[data-testid='input-number']").setValue(grz);
